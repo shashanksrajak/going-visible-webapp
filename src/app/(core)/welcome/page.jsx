@@ -4,11 +4,16 @@ import React from "react";
 
 import { currentUser } from "@/lib/server-actions/user-auth";
 import { Typography } from "@mui/material";
+import { redirect } from "next/navigation";
 
 export default async function WelcomePage() {
   const user = await currentUser();
 
   // fetch user from users collection
+
+  if (!user) {
+    redirect("/");
+  }
 
   return (
     <>

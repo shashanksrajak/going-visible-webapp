@@ -8,7 +8,7 @@ export default async function Layout({ children }) {
 
   return (
     <>
-      <Header user={user} />
+      {user && <Header user={user} />}
       <Box>
         <Container
           sx={{

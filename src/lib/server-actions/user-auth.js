@@ -56,9 +56,11 @@ export async function logout() {
 }
 
 export async function currentUser() {
+    const sessionCookie = cookies().get("session");
+
     try {
         console.log("currentUser action")
-        const sessionCookie = cookies().get("session");
+
         const decodedClaims = await firebaseAdmin.auth().verifySessionCookie(sessionCookie.value);
 
         const uid = decodedClaims.uid;
