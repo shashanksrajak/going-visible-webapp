@@ -14,8 +14,14 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Link from "next/link";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = [
+  { page: "Dashboard", link: "/dashboard" },
+  { page: "Moods", link: "/moods" },
+  { page: "Journal", link: "/journals" },
+  { page: "Family", link: "/family" },
+];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function Header({ user }) {
@@ -70,7 +76,7 @@ export default function Header({ user }) {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
+            {/* <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -93,7 +99,7 @@ export default function Header({ user }) {
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
@@ -114,15 +120,18 @@ export default function Header({ user }) {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{ flexGrow: 1, gap: 2, display: { xs: "none", md: "flex" } }}
+          >
             {pages.map((page) => (
-              <Button
+              <Link
+                href={page.link}
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                // sx={{ my: 2, mx: 2, color: "white", display: "block" }}
               >
-                {page}
-              </Button>
+                {page.page}
+              </Link>
             ))}
           </Box>
 

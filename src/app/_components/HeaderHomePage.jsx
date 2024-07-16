@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
@@ -16,6 +17,8 @@ import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import { signInWithGoogle } from "@/lib/firebase/auth";
 import { login } from "@/lib/server-actions/user-auth";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const logoStyle = {
   width: "140px",
@@ -26,10 +29,14 @@ const logoStyle = {
 const pages = ["Features", "About", "Contact"];
 
 export default function Navbar({ mode, toggleColorMode }) {
+  const [signingIn, setSigningIn] = useState(false);
+
   const signInHandler = async () => {
+    setSigningIn(true);
     const credentials = await signInWithGoogle();
     const token = await credentials.user?.getIdToken();
     await login(token);
+    setSigningIn(false);
   };
   const [open, setOpen] = React.useState(false);
 
@@ -53,6 +60,14 @@ export default function Navbar({ mode, toggleColorMode }) {
 
   return (
     <div>
+      <>
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={signingIn}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      </>
       <AppBar
         position="fixed"
         sx={{
