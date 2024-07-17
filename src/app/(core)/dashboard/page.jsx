@@ -6,6 +6,7 @@ import MoodPrompt from "./_components/MoodPrompt";
 import WeeklyStreak from "./_components/WeeklyStreak";
 import Rewards from "./_components/Rewards";
 import { redirect } from "next/navigation";
+import MoodLogPrompt from "./_components/MoodLogPrompt";
 
 export default async function DashboardPage() {
   const user = await currentUser();
@@ -19,6 +20,8 @@ export default async function DashboardPage() {
     <>
       <Box>
         <Welcome user={user} />
+
+        <MoodLogPrompt />
 
         <MoodPrompt />
       </Box>

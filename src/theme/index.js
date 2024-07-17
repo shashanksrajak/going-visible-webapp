@@ -88,55 +88,55 @@ const theme = createTheme({
     typography: {
         // fontFamily: ['"Poppins", "sans-serif"'].join(','),
         fontFamily: inter.style.fontFamily,
-        h1: {
-            fontSize: 60,
-            fontWeight: 600,
-            lineHeight: 78 / 70,
-            letterSpacing: -0.2,
-            fontFamily: poppins.style.fontFamily,
-        },
-        h2: {
-            fontSize: 48,
-            fontWeight: 400,
-            lineHeight: 1.2,
-            fontFamily: poppins.style.fontFamily,
-        },
-        h3: {
-            fontSize: 42,
-            fontWeight: 400,
-            lineHeight: 1.2,
-        },
-        h4: {
-            fontSize: 36,
-            fontWeight: 500,
-            lineHeight: 1.5,
-        },
-        h5: {
-            fontSize: 28,
-            fontWeight: 600,
-        },
-        h6: {
-            fontSize: 18,
-            fontWeight: 400,
-        },
-        subtitle1: {
-            fontSize: 18,
-        },
-        subtitle2: {
-            fontSize: 16,
-        },
-        body1: {
-            fontWeight: 400,
-            fontSize: 15,
-        },
-        body2: {
-            fontWeight: 400,
-            fontSize: 14,
-        },
-        caption: {
-            fontWeight: 400,
-            fontSize: 12,
-        },
+        // h1: {
+        //     fontSize: 60,
+        //     fontWeight: 600,
+        //     lineHeight: 78 / 70,
+        //     letterSpacing: -0.2,
+        //     fontFamily: poppins.style.fontFamily,
+        // },
+        // h2: {
+        //     fontSize: 48,
+        //     fontWeight: 400,
+        //     lineHeight: 1.2,
+        //     fontFamily: poppins.style.fontFamily,
+        // },
+        // h3: {
+        //     fontSize: 42,
+        //     fontWeight: 400,
+        //     lineHeight: 1.2,
+        // },
+        // h4: {
+        //     fontSize: 36,
+        //     fontWeight: 500,
+        //     lineHeight: 1.5,
+        // },
+        // h5: {
+        //     fontSize: 28,
+        //     fontWeight: 600,
+        // },
+        // h6: {
+        //     fontSize: 18,
+        //     fontWeight: 400,
+        // },
+        // subtitle1: {
+        //     fontSize: 18,
+        // },
+        // subtitle2: {
+        //     fontSize: 16,
+        // },
+        // body1: {
+        //     fontWeight: 400,
+        //     fontSize: 15,
+        // },
+        // body2: {
+        //     fontWeight: 400,
+        //     fontSize: 14,
+        // },
+        // caption: {
+        //     fontWeight: 400,
+        //     fontSize: 12,
+        // },
     },
     components: {
         MuiButton: {
