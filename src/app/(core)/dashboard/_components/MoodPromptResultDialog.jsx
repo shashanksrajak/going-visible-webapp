@@ -27,7 +27,8 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 export default function MoodPromptResult({
   loading,
   analyseMoodHandler,
-  moodResponse,
+  moodSentiment,
+  moodSuggestion,
   moodText,
 }) {
   const [open, setOpen] = React.useState(false);
@@ -79,9 +80,15 @@ export default function MoodPromptResult({
           ) : (
             <>
               {
-                <Markdown options={{ wrapper: "article" }}>
-                  {moodResponse}
-                </Markdown>
+                <>
+                  <Markdown options={{ wrapper: "article" }}>
+                    {moodSentiment}
+                  </Markdown>
+
+                  <Markdown options={{ wrapper: "article" }}>
+                    {moodSuggestion}
+                  </Markdown>
+                </>
               }
             </>
           )}

@@ -10,6 +10,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import MoodLogs from "./MoodLogs";
+import MoodVisuals from "./MoodVisuals";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -44,7 +45,7 @@ function a11yProps(index) {
   };
 }
 
-export default function MoodTabs() {
+export default function MoodTabs({ userId }) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -78,10 +79,10 @@ export default function MoodTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <MoodLogs />
+          <MoodLogs userId={userId} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
+          <MoodVisuals userId={userId} />
         </TabPanel>
       </SwipeableViews>
     </Box>

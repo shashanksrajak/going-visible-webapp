@@ -9,6 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import MoodLogTextDialog from "./MoodLogTextDialog";
+import MoodLogSelfieDialog from "./MoodLogSelfieDialog";
 
 export default function MoodLogPrompt() {
   return (
@@ -19,25 +21,11 @@ export default function MoodLogPrompt() {
 
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <Card>
-            <ButtonBase sx={{ width: "100%" }}>
-              <CardContent>
-                <EditNote fontSize="large" />
-                <Typography>Write your mood</Typography>
-              </CardContent>
-            </ButtonBase>
-          </Card>
+          <MoodLogTextDialog />
         </Grid>
 
         <Grid item xs={6}>
-          <Card>
-            <ButtonBase sx={{ width: "100%" }}>
-              <CardContent>
-                <CameraFront fontSize="large" />
-                <Typography>Upload a selfie</Typography>
-              </CardContent>
-            </ButtonBase>
-          </Card>
+          <MoodLogSelfieDialog />
         </Grid>
       </Grid>
     </Box>
