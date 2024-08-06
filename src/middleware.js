@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
 
-const protectedRoutes = ['/dashboard'];
+const protectedRoutes = ['/dashboard', '/moods', '/family', '/profile'];
 
 // This function can be marked `async` if using `await` inside
 export default async function middleware(request) {
     console.log('-----------inside middleware---------')
-    const sessionCookie = request.cookies.get("test-user");
+    const sessionCookie = request.cookies.get("session");
     // console.log(sessionCookie);
 
     // console.log(request.nextUrl);

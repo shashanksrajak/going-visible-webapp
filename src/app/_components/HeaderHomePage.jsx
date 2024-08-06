@@ -225,18 +225,6 @@ export default function Navbar({ mode, toggleColorMode }) {
                     Contact
                   </MenuItem>
                   <Divider />
-                  <MenuItem>
-                    <Link href={`/onboarding`}>
-                      <Button
-                        color="primary"
-                        variant="contained"
-                        component="a"
-                        sx={{ width: "100%" }}
-                      >
-                        Create an account
-                      </Button>
-                    </Link>
-                  </MenuItem>
                 </Box>
               </Drawer>
             </Box>

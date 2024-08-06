@@ -20,7 +20,7 @@ export default function WeeklyStreak() {
     <Box>
       <Typography variant="h5">Weekly Streak</Typography>
 
-      <Box mt={4}>
+      <Box mt={2}>
         <Card>
           <CardContent>
             <Stack direction={"row"} alignItems={"center"}>

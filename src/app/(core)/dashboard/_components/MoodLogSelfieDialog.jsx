@@ -14,49 +14,86 @@ import {
   CardContent,
   ButtonBase,
   Typography,
-  Avatar,
+  Divider,
+  Alert,
 } from "@mui/material";
 import { CameraFront } from "@mui/icons-material";
 import { Box, Stack } from "@mui/material";
 import { Send } from "@mui/icons-material";
-import { analyseMood } from "@/lib/server-actions/google-ai";
-import MoodPromptResult from "./MoodPromptResultDialog";
 import SelfieUploadButton from "./SelfieUploadButton";
+import { CircularProgress } from "@mui/material";
+import Markdown from "markdown-to-jsx";
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@mui/material/IconButton";
+import { checkMoodLogAllowed } from "@/lib/server-actions/mood-logs";
 
-export default function MoodLogSelfieDialog() {
-  const [moodText, setMoodText] = useState();
+export default function MoodLogSelfieDialog({ disabled }) {
   const [loading, setLoading] = useState(false);
+  const [analysing, setAnalysing] = useState(false);
 
-  const [selfiePreview, setSelfiePreview] = useState("");
+  const [selfiePreview, setSelfiePreview] = useState(null);
 
-  const [moodResponse, setMoodResponse] = useState(null);
+  const [moodSentiment, setMoodSentiment] = useState(null);
+  const [moodSuggestion, setMoodSuggestion] = useState(null);
 
   const [open, setOpen] = useState(false);
 
-  const analyseMoodHandler = async () => {
-    // setLoading(true);
-    if (moodText && moodText.length > 10) {
-      setLoading(true);
-      const response = await analyseMood(moodText);
-      console.log(response);
-      setMoodResponse(response);
-      setLoading(false);
+  const handleClickOpen = async () => {
+    // check if mood can be logged as per limit
+    const allow = await checkMoodLogAllowed();
+    if (allow) {
+      setOpen(true);
+    } else {
+      alert("Sorry! You have reached max limit of 5 for today.");
     }
   };
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClose = () => {
+    setAnalysing(false);
+    setLoading(false);
+    setSelfiePreview(null);
+    setOpen(false);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  // image uploaded then analyse mood
+  const onImageUpload = async (file) => {
+    setLoading(true);
+    setAnalysing(true);
+    // console.log("onImageUpload called..");
+    // console.log(file);
+    // console.log(file.type);
+
+    // Analyse Mood Using Image
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch("/api/ai/analyse-mood-image", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+
+    const moodSentiment = data.mood_sentiment;
+    const suggestion = data.suggestion;
+
+    setMoodSentiment(moodSentiment);
+    setMoodSuggestion(suggestion);
+
+    setLoading(false);
   };
 
   return (
     <React.Fragment>
       <>
         <Card>
-          <ButtonBase sx={{ width: "100%" }} onClick={handleClickOpen}>
+          <ButtonBase
+            sx={{ width: "100%" }}
+            onClick={handleClickOpen}
+            disabled={disabled}
+          >
             <CardContent>
               <CameraFront fontSize="large" />
               <Typography>Upload a selfie</Typography>
@@ -65,29 +102,124 @@ export default function MoodLogSelfieDialog() {
         </Card>
       </>
       <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
-        <DialogTitle>Upload your selfie</DialogTitle>
-        <DialogContent>
+        {analysing ? (
           <>
-            <Box>
-              <Avatar
-                sx={{ width: 150, height: 150, mb: 2 }}
-                src={selfiePreview}
-              />
-              <SelfieUploadButton setSelfiePreview={setSelfiePreview} />
-            </Box>
+            <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+              Mood Analysis
+            </DialogTitle>
+            <IconButton
+              aria-label="close"
+              onClick={handleClose}
+              sx={{
+                position: "absolute",
+                right: 8,
+                top: 8,
+                color: (theme) => theme.palette.grey[500],
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+            <DialogContent>
+              {loading ? (
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Box>
+                    <CircularProgress size={60} />
+                  </Box>
+                  <Typography>Analysing your mood...</Typography>
+                </Box>
+              ) : (
+                <>
+                  {
+                    <Stack spacing={4} mb={4}>
+                      <Stack>
+                        <Typography variant="subtitle2">
+                          Mood Sentiment
+                        </Typography>
+                        <Markdown options={{ wrapper: "article" }}>
+                          {moodSentiment}
+                        </Markdown>
+                      </Stack>
+
+                      <Stack>
+                        <Typography variant="subtitle2">Suggestion</Typography>
+                        <Markdown options={{ wrapper: "article" }}>
+                          {moodSuggestion}
+                        </Markdown>
+                      </Stack>
+                    </Stack>
+                  }
+
+                  <Alert severity="info">
+                    <Typography variant="caption">
+                      The mood analysis and suggestions provided are generated
+                      by AI and should be interpreted as informational. Please
+                      follow the suggestions with caution and consult a
+                      professional for any serious concerns or health-related
+                      issues.
+                    </Typography>
+                  </Alert>
+                </>
+              )}
+            </DialogContent>
           </>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} variant="outlined">
-            Cancel
-          </Button>
-          <MoodPromptResult
-            analyseMoodHandler={analyseMoodHandler}
-            loading={loading}
-            moodResponse={moodResponse}
-            moodText={moodText}
+        ) : (
+          <>
+            {" "}
+            <DialogTitle>Upload your selfie</DialogTitle>
+            <DialogContent>
+              <>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                    gap: 2,
+                  }}
+                >
+                  {selfiePreview ? (
+                    <img src={selfiePreview} alt="selfie" height={150} />
+                  ) : (
+                    <img
+                      src={`/assets/images/selfie.png`}
+                      alt="selfie"
+                      height={150}
+                    />
+                  )}
+                  <SelfieUploadButton
+                    setSelfiePreview={setSelfiePreview}
+                    onImageUpload={onImageUpload}
+                  />
+                </Box>
+              </>
+            </DialogContent>{" "}
+          </>
+        )}
+
+        {!analysing && (
+          <DialogActions>
+            <Button onClick={handleClose} variant="outlined">
+              Cancel
+            </Button>
+          </DialogActions>
+        )}
+
+        <Divider sx={{ mt: 2 }} />
+
+        <Stack alignItems={"center"} mt={2}>
+          <Typography variant="caption">Powered by</Typography>
+          <img
+            src="/assets/images/gemini-ai-logo.svg"
+            alt="gemini-ai"
+            height={50}
           />
-        </DialogActions>
+        </Stack>
       </Dialog>
     </React.Fragment>
   );

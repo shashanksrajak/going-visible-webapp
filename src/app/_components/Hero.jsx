@@ -2,14 +2,12 @@
 
 import * as React from "react";
 import { useState } from "react";
-import Link from "next/link";
 
 import { alpha } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { East } from "@mui/icons-material";
 import { signInWithGoogle } from "@/lib/firebase/auth";
@@ -125,8 +123,7 @@ export default function Hero() {
               color="text.secondary"
               sx={{ alignSelf: "center", width: { sm: "100%", md: "100%" } }}
             >
-              Effortless Digital Menus for Every Food Business. From Food Carts
-              to Cloud Kitchens, We’ve Got You Covered.
+              Providing Tools and Insights to Navigate Invisible Illnesses
             </Typography>
             {/* <Stack
             direction={"column"}

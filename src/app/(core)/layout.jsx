@@ -16,10 +16,10 @@ export default async function Layout({ children }) {
             // flexDirection: "column",
             // alignItems: "center",
             // bgcolor: "red",
-            pt: { xs: 4, sm: 5 },
-            pb: { xs: 5, sm: 10 },
+            pt: { xs: 12, sm: 16 },
+            pb: { xs: 12, sm: 16 },
           }}
-          maxWidth="sm"
+          maxWidth="md"
         >
           {children}
         </Container>

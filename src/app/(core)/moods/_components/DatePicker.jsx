@@ -14,6 +14,7 @@ export default function MoodDatePicker({ selectedDate, onDateChange }) {
           defaultValue={selectedDate}
           //   onChange={(newValue) => console.log(newValue.toDate())}
           onChange={(date) => onDateChange(date)}
+          maxDate={dayjs()}
         />
       </DemoContainer>
     </LocalizationProvider>

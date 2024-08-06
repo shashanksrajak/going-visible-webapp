@@ -31,7 +31,7 @@ export async function login(idToken) {
 
     // set cookie for session
     cookies().set('session', sessionCookie, { httpOnly: true, maxAge: expiresIn, secure: true })
-    cookies().set('test-user', 'Delba')
+    // cookies().set('test-user', 'Delba')
 
     // // Delete cookie
     // cookies().delete('name')
@@ -60,10 +60,13 @@ export async function currentUser() {
 
     try {
         console.log("currentUser action")
+        console.log('cookie', sessionCookie)
 
         const decodedClaims = await firebaseAdmin.auth().verifySessionCookie(sessionCookie.value);
 
         const uid = decodedClaims.uid;
+
+        console.log('uid', uid)
 
         // get user from users collection
         const docRef = doc(db, "users", uid);

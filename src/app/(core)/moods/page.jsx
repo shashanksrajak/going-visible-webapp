@@ -9,7 +9,6 @@ export default async function MoodHistoryPage() {
   return (
     <>
       <Typography variant="h4">Mood History</Typography>
-      <Typography variant="body2">Track all your past mood records</Typography>
 
       <Box my={4}>
         <MoodTabs userId={user.uid} />

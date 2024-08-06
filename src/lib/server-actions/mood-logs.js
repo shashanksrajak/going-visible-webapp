@@ -1,16 +1,20 @@
 "use server";
 
 import { db } from "../firebase/config";
-import { doc, addDoc, serverTimestamp, collection, query, where, Timestamp, getDocs } from "firebase/firestore";
+import { doc, addDoc, serverTimestamp, collection, query, where, Timestamp, getDocs, orderBy } from "firebase/firestore";
 import dayjs from "dayjs";
+import { currentUser } from "./user-auth";
 
-export async function addMoodLog(userId, moodData) {
+
+export async function addMoodLog(userId, moodText, moodData, image = null) {
     try {
         const userRef = doc(db, "users", userId);
         const moodLogsCollection = collection(userRef, "moodLogs");
 
         await addDoc(moodLogsCollection, {
             ...moodData,
+            mood: moodText,
+            image,
             timestamp: serverTimestamp()
         });
 
@@ -39,7 +43,8 @@ export async function getMoodLogsForDay(userId, date) {
     const dayQuery = query(
         moodLogsCollection,
         where("timestamp", ">=", Timestamp.fromDate(startOfDay)),
-        where("timestamp", "<=", Timestamp.fromDate(endOfDay))
+        where("timestamp", "<=", Timestamp.fromDate(endOfDay)),
+        orderBy("timestamp", "desc")
     );
 
     const querySnapshot = await getDocs(dayQuery);
@@ -50,6 +55,43 @@ export async function getMoodLogsForDay(userId, date) {
     });
 
     return moods;
+}
+
+export async function checkMoodLogAllowed() {
+    const user = await currentUser();
+
+    const userRef = doc(db, "users", user.uid);
+    const moodLogsCollection = collection(userRef, "moodLogs");
+
+    // Calculate start and end of the day
+    const startOfDay = new Date();
+    startOfDay.setHours(0, 0, 0, 0);
+    const endOfDay = new Date();
+    endOfDay.setHours(23, 59, 59, 999);
+
+    const dayQuery = query(
+        moodLogsCollection,
+        where("timestamp", ">=", Timestamp.fromDate(startOfDay)),
+        where("timestamp", "<=", Timestamp.fromDate(endOfDay))
+    );
+
+    const querySnapshot = await getDocs(dayQuery);
+    const moods = []
+    querySnapshot.forEach((doc) => {
+        console.log(doc.id, "=>", doc.data());
+        moods.push({ ...doc.data(), timestamp: doc.data().timestamp.toDate().toLocaleString(), })
+    });
+
+    const moodCount = moods.length;
+
+    console.log('mood count', moodCount)
+
+    if (moodCount > process.env.MOOD_LOG_LIMIT) {
+        return false;
+    } else {
+        return true;
+    }
+
 }
 
 export async function getMoodLogsForMonth(userId, selectedMonth) {

@@ -17,13 +17,18 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-export default function SelfieUploadButton({ setSelfiePreview }) {
+export default function SelfieUploadButton({
+  setSelfiePreview,
+  setSelfieFile,
+  onImageUpload,
+}) {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setSelfiePreview(reader.result);
+        onImageUpload(file);
       };
       reader.readAsDataURL(file);
     }

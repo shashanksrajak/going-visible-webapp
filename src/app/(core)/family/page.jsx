@@ -7,8 +7,6 @@ import AddMemberDialog from "./_components/AddMemberDialog";
 export default async function FamilyPage() {
   const user = await currentUser();
 
-  console.log(user);
-
   return (
     <>
       <Typography variant="h4">Family</Typography>

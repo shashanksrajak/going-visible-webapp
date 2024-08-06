@@ -19,7 +19,7 @@ export default async function DashboardPage() {
     <>
       <Box>
         <Welcome user={user} />
-        <MoodLogPrompt />
+        <MoodLogPrompt user={user} />
       </Box>
 
       <WeeklyStreak />

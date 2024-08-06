@@ -17,10 +17,10 @@ import {
 
 export default function Rewards() {
   return (
-    <Box mt={5}>
+    <Box mt={4}>
       <Typography variant="h5">Rewards</Typography>
 
-      <Box mt={4}>
+      <Box mt={2}>
         <Card>
           <CardContent>
             <Stack direction={"row"} alignItems={"center"}>
