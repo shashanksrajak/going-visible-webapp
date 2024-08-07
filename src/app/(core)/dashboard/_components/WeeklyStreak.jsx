@@ -1,70 +1,115 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Typography,
   Stack,
   Card,
-  CardHeader,
   CardContent,
+  Skeleton,
 } from "@mui/material";
-import {
-  CheckCircle,
-  Radio,
-  RadioButtonUnchecked,
-  Verified,
-  Whatshot,
-} from "@mui/icons-material";
+import { RadioButtonUnchecked, Verified, Whatshot } from "@mui/icons-material";
 
-export default function WeeklyStreak() {
+const getCurrentWeekDates = () => {
+  const currentDate = new Date();
+  const firstDayOfWeek = currentDate.getDate() - currentDate.getDay(); // Start from Sunday
+  const dates = [];
+
+  for (let i = 0; i < 7; i++) {
+    const date = new Date(currentDate);
+    date.setDate(firstDayOfWeek + i);
+    dates.push(date);
+  }
+
+  return dates;
+};
+
+const formatDate = (date) =>
+  date.toLocaleDateString(undefined, { weekday: "short" });
+
+export default function Streaks() {
+  const [loading, setLoading] = useState(true);
+  const [loggedDays, setLoggedDays] = useState([]);
+  const [weeklyStreak, setWeeklyStreak] = useState(0); // Track weekly streaks
+  const weekDates = getCurrentWeekDates();
+
+  useEffect(() => {
+    const fetchMoodLogs = async () => {
+      try {
+        const response = await fetch(`/api/moods/weekly-logs`);
+        const data = await response.json();
+
+        const logs = data.logs;
+        setLoggedDays(logs.map((log) => new Date(log).toLocaleDateString()));
+        setWeeklyStreak(data.weeklyStreak || 0); // Fetch the weekly streak count
+      } catch (error) {
+        console.error("Error fetching mood logs:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMoodLogs();
+  }, []);
+
+  const currentStreak = weekDates.reduce((streak, date) => {
+    const dateStr = date.toLocaleDateString();
+    if (loggedDays.includes(dateStr)) {
+      return streak + 1;
+    }
+    return streak;
+  }, 0);
+
   return (
     <Box>
-      <Typography variant="h5">Weekly Streak</Typography>
+      <Typography variant="h5">Streaks</Typography>
 
       <Box mt={2}>
         <Card>
           <CardContent>
-            <Stack direction={"row"} alignItems={"center"}>
-              <Whatshot sx={{ fontSize: 60 }} color="secondary" />
-              <Stack>
-                <Typography variant="h5">6</Typography>
-                <Typography fontSize={"md"}>Day Streak</Typography>
+            <Stack direction={"row"} alignItems={"center"} spacing={4}>
+              <Stack direction={"row"} alignItems={"center"}>
+                <Whatshot sx={{ fontSize: 60 }} color="secondary" />
+                <Stack>
+                  {loading ? (
+                    <Skeleton variant="text" sx={{ fontSize: "2rem" }} />
+                  ) : (
+                    <Typography variant="h5">{currentStreak}</Typography>
+                  )}
+                  <Typography fontSize={"md"}>Day Streak</Typography>
+                </Stack>
+              </Stack>
+
+              <Stack direction={"row"} alignItems={"center"}>
+                <Whatshot sx={{ fontSize: 60 }} color="secondary" />
+                <Stack>
+                  {loading ? (
+                    <Skeleton variant="text" sx={{ fontSize: "2rem" }} />
+                  ) : (
+                    <Typography variant="h5">{weeklyStreak}</Typography>
+                  )}
+                  <Typography fontSize={"md"}>Week Streak</Typography>
+                </Stack>
               </Stack>
             </Stack>
+
             <Stack mt={4} direction={"row"} gap={2}>
-              <Stack alignItems={"center"}>
-                <Verified color="success" />
-                <Typography>M</Typography>
-              </Stack>
+              {weekDates.map((date, index) => {
+                const dateStr = date.toLocaleDateString();
+                const isLogged = loggedDays.includes(dateStr);
 
-              <Stack alignItems={"center"}>
-                <RadioButtonUnchecked />
-                <Typography>T</Typography>
-              </Stack>
-
-              <Stack alignItems={"center"}>
-                <RadioButtonUnchecked />
-                <Typography>W</Typography>
-              </Stack>
-
-              <Stack alignItems={"center"}>
-                <RadioButtonUnchecked />
-                <Typography>T</Typography>
-              </Stack>
-
-              <Stack alignItems={"center"}>
-                <RadioButtonUnchecked />
-                <Typography>F</Typography>
-              </Stack>
-
-              <Stack alignItems={"center"}>
-                <RadioButtonUnchecked />
-                <Typography>S</Typography>
-              </Stack>
-
-              <Stack alignItems={"center"}>
-                <RadioButtonUnchecked />
-                <Typography>S</Typography>
-              </Stack>
+                return (
+                  <Stack alignItems={"center"} key={index}>
+                    {isLogged ? (
+                      <Verified color="success" />
+                    ) : (
+                      <RadioButtonUnchecked />
+                    )}
+                    <Typography>{formatDate(date)}</Typography>
+                  </Stack>
+                );
+              })}
             </Stack>
           </CardContent>
         </Card>

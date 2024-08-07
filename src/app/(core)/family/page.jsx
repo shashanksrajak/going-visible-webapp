@@ -30,6 +30,7 @@ export default async function FamilyPage() {
               return (
                 <MemberCard
                   key={member.email}
+                  userId={user.uid}
                   name={member.name}
                   email={member.email}
                 />

@@ -138,16 +138,14 @@ export default function Navbar({ mode, toggleColorMode }) {
                   </Typography>
                 </MenuItem>
 
-                <Link href={`/about`} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    onClick={() => scrollToSection("testimonials")}
-                    sx={{ py: "6px", px: "12px" }}
-                  >
-                    <Typography variant="body2" color="text.primary">
-                      About
-                    </Typography>
-                  </MenuItem>
-                </Link>
+                <MenuItem
+                  onClick={() => scrollToSection("about")}
+                  sx={{ py: "6px", px: "12px" }}
+                >
+                  <Typography variant="body2" color="text.primary">
+                    About
+                  </Typography>
+                </MenuItem>
 
                 <MenuItem
                   onClick={() => scrollToSection("footer")}
@@ -218,13 +216,24 @@ export default function Navbar({ mode, toggleColorMode }) {
                   <MenuItem onClick={() => scrollToSection("faq")}>
                     FAQ
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("testimonials")}>
+                  <MenuItem onClick={() => scrollToSection("about")}>
                     About
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection("footer")}>
                     Contact
                   </MenuItem>
                   <Divider />
+
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    // size="small"
+                    fullWidth
+                    sx={{ mt: 4 }}
+                    onClick={signInHandler}
+                  >
+                    Sign In With Google
+                  </Button>
                 </Box>
               </Drawer>
             </Box>

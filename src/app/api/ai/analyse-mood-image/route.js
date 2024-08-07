@@ -74,11 +74,8 @@ The person is ${age} years old, their gender is ${gender}, their bio is ${bio} $
         sendMoodAlerts(tips)
     }
 
-    // upload image to firebase
-    const image = await uploadImageFirebase(file)
-
     // store data in firestore
-    await addMoodLog(user.uid, null, jsonResponse, image)
+    addMoodLog(user.uid, null, jsonResponse, file)
 
     return Response.json(jsonResponse);
 }

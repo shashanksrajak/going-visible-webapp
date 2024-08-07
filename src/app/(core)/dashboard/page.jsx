@@ -24,7 +24,7 @@ export default async function DashboardPage() {
 
       <WeeklyStreak />
 
-      <Rewards />
+      <Rewards badges={user.badges} />
     </>
   );
 }

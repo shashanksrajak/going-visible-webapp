@@ -76,7 +76,7 @@ Text: ${moodText}
     }
 
     // store data in firestore
-    await addMoodLog(user.uid, moodText, jsonResponse)
+    addMoodLog(user.uid, moodText, jsonResponse);
 
 
     return Response.json(jsonResponse);

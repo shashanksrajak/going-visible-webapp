@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -6,11 +8,21 @@ import {
   Box,
   Button,
   IconButton,
+  CircularProgress,
 } from "@mui/material";
-import { Delete, Edit } from "@mui/icons-material";
-import React from "react";
+import { Delete } from "@mui/icons-material";
+import React, { useState } from "react";
+import { deleteFamilyMember } from "@/lib/server-actions/family";
 
-export default function MemberCard({ name, email }) {
+export default function MemberCard({ userId, name, email }) {
+  const [deleting, setDeleting] = useState(false);
+
+  const deleteMemberHandler = async () => {
+    setDeleting(true);
+    await deleteFamilyMember(userId, email);
+    setDeleting(false);
+  };
+
   return (
     <Card>
       <CardContent>
@@ -21,12 +33,17 @@ export default function MemberCard({ name, email }) {
           </Box>
 
           <Box>
-            {/* <IconButton aria-label="edit" color="secondary">
-              <Edit />
-            </IconButton> */}
-            <IconButton aria-label="delete" color="secondary">
-              <Delete />
-            </IconButton>
+            {deleting ? (
+              <CircularProgress />
+            ) : (
+              <IconButton
+                aria-label="delete"
+                color="secondary"
+                onClick={deleteMemberHandler}
+              >
+                <Delete />
+              </IconButton>
+            )}
           </Box>
         </Stack>
       </CardContent>

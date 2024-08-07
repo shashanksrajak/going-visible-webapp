@@ -16,6 +16,7 @@ import {
 import { updateProfile } from "@/lib/server-actions/profile";
 
 export default function ProfileForm({ user }) {
+  const [updating, setUpdating] = useState(false);
   const [name, setName] = useState(user.name);
   const [age, setAge] = useState(user.age);
   const [gender, setGender] = useState(user.gender);
@@ -46,14 +47,15 @@ export default function ProfileForm({ user }) {
 
   const handleSubmit = async () => {
     if (validate()) {
+      setUpdating(true);
       // Handle form submission logic here
-      console.log({
-        name,
-        age,
-        gender,
-        bio,
-        medicalCondition,
-      });
+      // console.log({
+      //   name,
+      //   age,
+      //   gender,
+      //   bio,
+      //   medicalCondition,
+      // });
 
       const profile = {
         name,
@@ -68,6 +70,7 @@ export default function ProfileForm({ user }) {
       if (response) {
         alert("Profile Updated.");
       }
+      setUpdating(false);
     }
   };
 
@@ -139,8 +142,8 @@ export default function ProfileForm({ user }) {
           onChange={(e) => setMedicalCondition(e.target.value)}
         />
 
-        <Button variant="contained" onClick={handleSubmit}>
-          Save
+        <Button variant="contained" onClick={handleSubmit} disabled={updating}>
+          {updating ? "Updating..." : "Save"}
         </Button>
       </Stack>
     </>

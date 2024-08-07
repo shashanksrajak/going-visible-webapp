@@ -19,7 +19,12 @@ export async function login(idToken) {
         uid: token.uid,
         name: token.name,
         picture: token.picture,
-        email: token.email
+        email: token.email,
+        badges: {
+            firstMoodLogBadge: 0,
+            weeklyStreakBadge: 0,
+            positiveDayBadge: 0
+        }
     }
     await setDoc(doc(db, "users", token.uid), docData, { merge: true });
 

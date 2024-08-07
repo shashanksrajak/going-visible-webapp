@@ -122,25 +122,13 @@ export default function Hero() {
               textAlign="center"
               color="text.secondary"
               sx={{ alignSelf: "center", width: { sm: "100%", md: "100%" } }}
+              variant="h6"
             >
-              Providing Tools and Insights to Navigate Invisible Illnesses
+              Transforming emotional well-being with cutting-edge AI technology.
+              Our platform harnesses the power of Gemini AI to provide
+              personalized insights and support.
             </Typography>
-            {/* <Stack
-            direction={"column"}
-            alignSelf="center"
-            spacing={1}
-            useFlexGap
-            sx={{ pt: 2, width: { xs: "100%", sm: "auto" } }}
-          ></Stack> */}
 
-            {/* <Typography
-            textAlign={"center"}
-            variant="h6"
-            sx={{ alignSelf: "center", width: { sm: "100%", md: "100%" } }}
-            mt={4}
-          >
-            Digitize your menu with ease and enhance your customer experience.
-          </Typography> */}
             <Box justifyContent={"center"} display={"flex"}>
               <Button
                 variant="contained"
@@ -152,17 +140,6 @@ export default function Hero() {
                 Get Started For Free
               </Button>
             </Box>
-            {/* <Typography
-            variant="caption"
-            textAlign="center"
-            sx={{ opacity: 0.8 }}
-          >
-            By clicking &quot;Start now&quot; you agree to our&nbsp;
-            <Link href="#" color="primary">
-              Terms & Conditions
-            </Link>
-            .
-          </Typography> */}
           </Stack>
           <Box
             id="image"
