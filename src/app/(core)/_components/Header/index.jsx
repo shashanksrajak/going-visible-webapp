@@ -62,7 +62,7 @@ export default function Header({ user }) {
               textDecoration: "none",
             }}
           >
-            being visible
+            going visible
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -120,7 +120,7 @@ export default function Header({ user }) {
               textDecoration: "none",
             }}
           >
-            being visible
+            going visible
           </Typography>
           <Box
             sx={{ flexGrow: 1, gap: 2, display: { xs: "none", md: "flex" } }}

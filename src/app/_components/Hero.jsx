@@ -72,7 +72,7 @@ export default function Hero() {
               }}
               color={"primary"}
             >
-              {/* Being Visible&nbsp; */}
+              {/* going visible&nbsp; */}
               Empowering People with
               <Typography
                 component="span"
@@ -114,7 +114,7 @@ export default function Hero() {
                   }}
                   color={"secondary"}
                 >
-                  Being Visible.
+                  going visible.
                 </Typography>
               </Typography>
             </Typography>

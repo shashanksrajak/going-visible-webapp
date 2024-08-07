@@ -13,7 +13,7 @@ export const sendMoodAlerts = async (suggestion) => {
 
     const userName = user.name.split(" ")[0];
 
-    const subject = `Support and Encouragement for a Tough Day for ${userName} : Being Visible`;
+    const subject = `Support and Encouragement for a Tough Day for ${userName} : going visible`;
 
     const text = `
 Hey there,
@@ -29,7 +29,7 @@ Sometimes, a kind word or a simple gesture can have a tremendous impact. If you 
 Thank you for being there for ${userName} and for your ongoing support. It’s the little things that make a big difference.
 
 Warm regards,
-Being Visible
+going visible
     `;
 
 

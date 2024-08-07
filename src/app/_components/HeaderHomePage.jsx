@@ -117,7 +117,7 @@ export default function Navbar({ mode, toggleColorMode }) {
                 alt="logo of sitemark"
               /> */}
               <Typography variant="h6" color={"blue"} px={4}>
-                being visible
+                going visible
               </Typography>
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 <MenuItem

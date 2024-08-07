@@ -16,7 +16,7 @@ function Copyright() {
     <Box textAlign={"center"} my={4} borderTop={1} borderColor={grey[300]}>
       <Typography variant="body2" color="text.secondary" mt={1}>
         {"Copyright © "}
-        <Link href="https://pakwanify.com/">Being Visible&nbsp;</Link>
+        <Link href="https://pakwanify.com/">going visible&nbsp;</Link>
         {new Date().getFullYear()}
       </Typography>
     </Box>

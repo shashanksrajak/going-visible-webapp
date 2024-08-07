@@ -7,7 +7,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Being Visible",
+  title: "going visible",
   description: "AI powered digital platform to empower people with invisible illnesses.",
 };
 
