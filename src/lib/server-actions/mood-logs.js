@@ -5,6 +5,7 @@ import { doc, getDoc, setDoc, updateDoc, addDoc, serverTimestamp, collection, qu
 import dayjs from "dayjs";
 import { currentUser } from "./user-auth";
 import { revalidatePath } from "next/cache";
+import { uploadImageFirebase } from "../firebase/storage";
 
 export async function addMoodLog(userId, moodText, moodData, file = null) {
     try {
