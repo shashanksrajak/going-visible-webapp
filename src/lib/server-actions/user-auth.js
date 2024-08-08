@@ -7,26 +7,44 @@ import { db } from "../firebase/config";
 import { setDoc, doc, getDoc } from "firebase/firestore";
 
 export async function login(idToken) {
-    console.log("login server action");
+    // console.log("login server action");
 
     // Verify idToken with firebase
     const token = await firebaseAdmin.auth().verifyIdToken(idToken);
     // console.log('verified token')
     // console.log(token)
 
+    // TODO: fix this code where badges gets zero on login
+
+    // Get a reference to the user's document
+    const userRef = doc(db, "users", token.uid);
+    const userSnap = await getDoc(userRef);
+
+    let badges = {
+        firstMoodLogBadge: 0,
+        weeklyStreakBadge: 0,
+        positiveDayBadge: 0
+    };
+
+    let name = token.name;
+
+    // If the user already exists, use their current badges
+    if (userSnap.exists()) {
+        const userData = userSnap.data();
+        badges = userData.badges || badges;
+        name = userData.name;
+    }
+
     // Sync user to users collection
     const docData = {
         uid: token.uid,
-        name: token.name,
+        name: name,
         picture: token.picture,
         email: token.email,
-        badges: {
-            firstMoodLogBadge: 0,
-            weeklyStreakBadge: 0,
-            positiveDayBadge: 0
-        }
+        badges: badges
     }
-    await setDoc(doc(db, "users", token.uid), docData, { merge: true });
+
+    await setDoc(userRef, docData, { merge: true });
 
 
     // Set session cookie using firebase
@@ -36,14 +54,8 @@ export async function login(idToken) {
 
     // set cookie for session
     cookies().set('session', sessionCookie, { httpOnly: true, maxAge: expiresIn, secure: true })
-    // cookies().set('test-user', 'Delba')
-
-    // // Delete cookie
-    // cookies().delete('name')
-    // Set cookie
 
     redirect("/dashboard")
-
 }
 
 export async function logout() {

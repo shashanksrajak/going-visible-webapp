@@ -74,8 +74,9 @@ The person is ${age} years old, their gender is ${gender}, their bio is ${bio} $
         sendMoodAlerts(tips)
     }
 
+    // TODO: fix this, this is not getting stored
     // store data in firestore
-    addMoodLog(user.uid, null, jsonResponse, file)
+    await addMoodLog(user.uid, null, jsonResponse, file)
 
     return Response.json(jsonResponse);
 }

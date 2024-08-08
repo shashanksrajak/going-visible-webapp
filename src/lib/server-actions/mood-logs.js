@@ -8,6 +8,7 @@ import { revalidatePath } from "next/cache";
 import { uploadImageFirebase } from "../firebase/storage";
 
 export async function addMoodLog(userId, moodText, moodData, file = null) {
+    console.log("Adding Mood Log.")
     try {
         const userRef = doc(db, "users", userId);
         const moodLogsCollection = collection(userRef, "moodLogs");
