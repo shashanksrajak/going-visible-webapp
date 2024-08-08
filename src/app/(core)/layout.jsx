@@ -12,10 +12,6 @@ export default async function Layout({ children }) {
       <Box>
         <Container
           sx={{
-            // display: "flex",
-            // flexDirection: "column",
-            // alignItems: "center",
-            // bgcolor: "red",
             pt: { xs: 12, sm: 16 },
             pb: { xs: 12, sm: 16 },
           }}

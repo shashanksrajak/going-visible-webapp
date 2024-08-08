@@ -2,9 +2,7 @@
 
 import React, { useState } from "react";
 import {
-  Typography,
   Button,
-  Box,
   Stack,
   TextField,
   FormControl,
@@ -48,14 +46,6 @@ export default function ProfileForm({ user }) {
   const handleSubmit = async () => {
     if (validate()) {
       setUpdating(true);
-      // Handle form submission logic here
-      // console.log({
-      //   name,
-      //   age,
-      //   gender,
-      //   bio,
-      //   medicalCondition,
-      // });
 
       const profile = {
         name,

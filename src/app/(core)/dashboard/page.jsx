@@ -9,11 +9,6 @@ import MoodLogPrompt from "./_components/MoodLogPrompt";
 
 export default async function DashboardPage() {
   const user = await currentUser();
-  console.log(user);
-
-  if (!user) {
-    redirect("/");
-  }
 
   return (
     <>

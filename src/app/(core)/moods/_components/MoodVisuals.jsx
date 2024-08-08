@@ -75,17 +75,12 @@ export default function MoodVisuals({ userId }) {
     moodLogs.forEach((log) => {
       const date = dayjs(log.timestamp).date();
 
-      console.log("date of mood log", date);
       const index = labels.indexOf(String(date));
-      console.log("index", index);
       if (index !== -1) {
         data[log.mood_sentiment][index] += 1;
         totalData[log.mood_sentiment] += 1;
       }
     });
-
-    console.log("labels", labels);
-    console.log("data", data);
 
     setMonthlyData({
       labels,

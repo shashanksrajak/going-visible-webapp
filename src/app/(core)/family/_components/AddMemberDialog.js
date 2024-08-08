@@ -41,8 +41,6 @@ export default function AddMemberDialog({ userId }) {
                         const email = formJson.email;
                         const name = formJson.name;
 
-                        console.log(email, name);
-
                         // Add member
                         await addFamilyMember(userId, name, email);
                         setLoading(false);

@@ -54,8 +54,6 @@ export default function MoodLogTextDialog({ disabled }) {
       });
 
       const data = await response.json();
-      // const response = await analyseMood(moodText);
-      console.log(data);
 
       // Access the mood sentiment and suggestion
       const moodSentiment = data.mood_sentiment;

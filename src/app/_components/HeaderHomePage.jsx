@@ -2,8 +2,6 @@
 
 import * as React from "react";
 import { useState } from "react";
-import PropTypes from "prop-types";
-import Link from "next/link";
 
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
@@ -20,15 +18,7 @@ import { login } from "@/lib/server-actions/user-auth";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 
-const logoStyle = {
-  width: "140px",
-  height: "auto",
-  cursor: "pointer",
-};
-
-const pages = ["Features", "About", "Contact"];
-
-export default function Navbar({ mode, toggleColorMode }) {
+export default function Navbar() {
   const [signingIn, setSigningIn] = useState(false);
 
   const signInHandler = async () => {
@@ -164,13 +154,9 @@ export default function Navbar({ mode, toggleColorMode }) {
                 alignItems: "center",
               }}
             >
-              {/* <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} /> */}
-
               <Button
                 color="primary"
                 variant="contained"
-                // size="small"
-
                 onClick={signInHandler}
               >
                 Sign In With Google
@@ -195,20 +181,6 @@ export default function Navbar({ mode, toggleColorMode }) {
                     flexGrow: 1,
                   }}
                 >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "end",
-                      flexGrow: 1,
-                    }}
-                  >
-                    {/* <ToggleColorMode
-                      mode={mode}
-                      toggleColorMode={toggleColorMode}
-                    /> */}
-                  </Box>
-
                   <MenuItem onClick={() => scrollToSection("features")}>
                     Features
                   </MenuItem>
@@ -243,8 +215,3 @@ export default function Navbar({ mode, toggleColorMode }) {
     </div>
   );
 }
-
-Navbar.propTypes = {
-  mode: PropTypes.oneOf(["dark", "light"]).isRequired,
-  toggleColorMode: PropTypes.func.isRequired,
-};

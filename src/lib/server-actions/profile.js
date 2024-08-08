@@ -13,7 +13,6 @@ export const updateProfile = async (userId, profileData) => {
         // Update the user's document with the new profile data
         await updateDoc(userRef, profileData);
 
-        console.log("Profile updated successfully");
         revalidatePath("/profile")
 
         return true;

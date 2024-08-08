@@ -7,14 +7,8 @@ import { db } from "../firebase/config";
 import { setDoc, doc, getDoc } from "firebase/firestore";
 
 export async function login(idToken) {
-    // console.log("login server action");
-
     // Verify idToken with firebase
     const token = await firebaseAdmin.auth().verifyIdToken(idToken);
-    // console.log('verified token')
-    // console.log(token)
-
-    // TODO: fix this code where badges gets zero on login
 
     // Get a reference to the user's document
     const userRef = doc(db, "users", token.uid);
@@ -76,14 +70,9 @@ export async function currentUser() {
     const sessionCookie = cookies().get("session");
 
     try {
-        console.log("currentUser action")
-        console.log('cookie', sessionCookie)
-
         const decodedClaims = await firebaseAdmin.auth().verifySessionCookie(sessionCookie.value);
 
         const uid = decodedClaims.uid;
-
-        console.log('uid', uid)
 
         // get user from users collection
         const docRef = doc(db, "users", uid);
@@ -93,7 +82,6 @@ export async function currentUser() {
             const user = docSnap.data()
             return user;
         } else {
-            console.log("no user found")
             // throw an error
             return null
         }

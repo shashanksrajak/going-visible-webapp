@@ -6,11 +6,6 @@ import Typography from "@mui/material/Typography";
 import { Divider } from "@mui/material";
 import { grey } from "@mui/material/colors";
 
-const logoStyle = {
-  width: "140px",
-  height: "auto",
-};
-
 function Copyright() {
   return (
     <Box textAlign={"center"} my={4} borderTop={1} borderColor={grey[300]}>

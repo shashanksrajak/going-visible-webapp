@@ -1,8 +1,7 @@
 'use client';
-import { Roboto, Poppins, Inter } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { createTheme } from '@mui/material/styles';
 import { alpha } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
 
 const inter = Inter({
     weight: ['300', '400', '500', '700'],
@@ -10,11 +9,6 @@ const inter = Inter({
     display: 'swap',
 });
 
-const poppins = Poppins({
-    weight: ['900', '800', '700', '600'],
-    subsets: ['latin'],
-    display: 'swap'
-})
 
 // colors
 export const gray = {
@@ -86,57 +80,7 @@ const theme = createTheme({
         },
     },
     typography: {
-        // fontFamily: ['"Poppins", "sans-serif"'].join(','),
         fontFamily: inter.style.fontFamily,
-        // h1: {
-        //     fontSize: 60,
-        //     fontWeight: 600,
-        //     lineHeight: 78 / 70,
-        //     letterSpacing: -0.2,
-        //     fontFamily: poppins.style.fontFamily,
-        // },
-        // h2: {
-        //     fontSize: 48,
-        //     fontWeight: 400,
-        //     lineHeight: 1.2,
-        //     fontFamily: poppins.style.fontFamily,
-        // },
-        // h3: {
-        //     fontSize: 42,
-        //     fontWeight: 400,
-        //     lineHeight: 1.2,
-        // },
-        // h4: {
-        //     fontSize: 36,
-        //     fontWeight: 500,
-        //     lineHeight: 1.5,
-        // },
-        // h5: {
-        //     fontSize: 28,
-        //     fontWeight: 600,
-        // },
-        // h6: {
-        //     fontSize: 18,
-        //     fontWeight: 400,
-        // },
-        // subtitle1: {
-        //     fontSize: 18,
-        // },
-        // subtitle2: {
-        //     fontSize: 16,
-        // },
-        // body1: {
-        //     fontWeight: 400,
-        //     fontSize: 15,
-        // },
-        // body2: {
-        //     fontWeight: 400,
-        //     fontSize: 14,
-        // },
-        // caption: {
-        //     fontWeight: 400,
-        //     fontSize: 12,
-        // },
     },
     components: {
         MuiButton: {
@@ -230,49 +174,6 @@ const theme = createTheme({
                 }),
             },
         },
-        // MuiChip: {
-        //     styleOverrides: {
-        //         root: ({ theme }) => ({
-        //             alignSelf: 'center',
-        //             py: 1.5,
-        //             px: 0.5,
-        //             background: `linear-gradient(to bottom right, ${brand[50]}, ${brand[100]})`,
-        //             border: '1px solid',
-        //             borderColor: `${alpha(brand[500], 0.3)}`,
-        //             fontWeight: '600',
-        //             '&:hover': {
-        //                 backgroundColor: brand[500],
-        //             },
-        //             '&:focus-visible': {
-        //                 borderColor: brand[800],
-        //                 backgroundColor: brand[200],
-        //             },
-        //             '& .MuiChip-label': {
-        //                 color: brand[500],
-        //             },
-        //             '& .MuiChip-icon': {
-        //                 color: brand[500],
-        //             },
-        //             ...(theme.palette.mode === 'dark' && {
-        //                 background: `linear-gradient(to bottom right, ${brand[700]}, ${brand[900]})`,
-        //                 borderColor: `${alpha(brand[500], 0.5)}`,
-        //                 '&:hover': {
-        //                     backgroundColor: brand[600],
-        //                 },
-        //                 '&:focus-visible': {
-        //                     borderColor: brand[200],
-        //                     backgroundColor: brand[600],
-        //                 },
-        //                 '& .MuiChip-label': {
-        //                     color: brand[200],
-        //                 },
-        //                 '& .MuiChip-icon': {
-        //                     color: brand[200],
-        //                 },
-        //             }),
-        //         }),
-        //     },
-        // },
     }
 });
 

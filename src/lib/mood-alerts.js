@@ -41,20 +41,19 @@ going visible
 // Function to send email
 async function sendEmail(to, subject, text) {
 
-    // Create a transporter object using SMTP transport
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: process.env.EMAIL_USERNAME, // Your email address
-            pass: process.env.EMAIL_PASSWORD  // Your email password or app-specific password
+            user: process.env.EMAIL_USERNAME,
+            pass: process.env.EMAIL_PASSWORD
         }
     });
 
     const mailOptions = {
-        from: process.env.EMAIL_USERNAME, // Sender address
-        to: to,                           // List of receivers
-        subject: subject,                 // Subject line
-        text: text                        // Plain text body
+        from: process.env.EMAIL_USERNAME,
+        to: to,
+        subject: subject,
+        text: text
     };
 
     try {

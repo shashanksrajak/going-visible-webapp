@@ -1,4 +1,4 @@
-import { Typography, Button, Box, Stack, Alert } from "@mui/material";
+import { Typography, Box, Stack, Alert } from "@mui/material";
 import React from "react";
 import MemberCard from "./_components/MemberCard";
 import { currentUser } from "@/lib/server-actions/user-auth";

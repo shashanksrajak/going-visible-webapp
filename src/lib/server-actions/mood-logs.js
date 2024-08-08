@@ -8,7 +8,6 @@ import { revalidatePath } from "next/cache";
 import { uploadImageFirebase } from "../firebase/storage";
 
 export async function addMoodLog(userId, moodText, moodData, file = null) {
-    console.log("Adding Mood Log.")
     try {
         const userRef = doc(db, "users", userId);
         const moodLogsCollection = collection(userRef, "moodLogs");
@@ -30,8 +29,6 @@ export async function addMoodLog(userId, moodText, moodData, file = null) {
 
         const moodLogsQS = await getDocs(moodLogsCollection);
         const moodsCount = moodLogsQS.size;
-
-        console.log("Mood log added successfully.");
 
         // Update weekly streak
         await updateWeeklyStreak(userId);
@@ -96,7 +93,6 @@ export async function getMoodLogsForDay(userId, date) {
     const querySnapshot = await getDocs(dayQuery);
     const moods = []
     querySnapshot.forEach((doc) => {
-        console.log(doc.id, "=>", doc.data());
         moods.push({ ...doc.data(), timestamp: doc.data().timestamp.toDate().toLocaleString(), })
     });
 
@@ -124,13 +120,10 @@ export async function checkMoodLogAllowed() {
     const querySnapshot = await getDocs(dayQuery);
     const moods = []
     querySnapshot.forEach((doc) => {
-        console.log(doc.id, "=>", doc.data());
         moods.push({ ...doc.data(), timestamp: doc.data().timestamp.toDate().toLocaleString(), })
     });
 
     const moodCount = moods.length;
-
-    console.log('mood count', moodCount)
 
     if (moodCount > process.env.MOOD_LOG_LIMIT) {
         return false;

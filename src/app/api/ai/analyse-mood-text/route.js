@@ -4,13 +4,9 @@ import { addMoodLog } from "@/lib/server-actions/mood-logs";
 import { sendMoodAlerts } from "@/lib/mood-alerts";
 
 export async function POST(request) {
-    console.log('Analysing Mood Text AI route...')
-
     const body = await request.json();
-    console.log(body)
 
     const user = await currentUser();
-    console.log(user)
 
     const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_API_KEY)
 
@@ -47,36 +43,21 @@ Text: ${moodText}
 
     const result = await aiModel.generateContent([prompt])
 
-    console.log(result)
 
     const response = result.response.text();
 
-    console.log(response);
-
-    // // Remove potential Markdown code block formatting
-    // const cleanedResponse = response.replace(/```json|```/g, '').trim();
-
-    // console.log("Cleaned Response:", cleanedResponse);
-
-    // Parse the cleaned response as JSON
     const jsonResponse = JSON.parse(response);
 
     // Access the mood sentiment and suggestion
     const moodSentiment = jsonResponse.mood_sentiment;
-    const suggestion = jsonResponse.suggestion;
     const tips = jsonResponse.tips;
-
-    console.log("Mood Sentiment:", moodSentiment);
-    console.log("Suggestion:", suggestion);
-    console.log("Tips:", tips);
-
 
     if (moodSentiment === 'NEGATIVE') {
         sendMoodAlerts(tips);
     }
 
     // store data in firestore
-    addMoodLog(user.uid, moodText, jsonResponse);
+    await addMoodLog(user.uid, moodText, jsonResponse);
 
 
     return Response.json(jsonResponse);

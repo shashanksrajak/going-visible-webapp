@@ -39,8 +39,5 @@ const getCurrentWeekDates = () => {
         date.setDate(firstDayOfWeek + i);
         dates.push(date);
     }
-
-    console.log(dates)
-
     return dates;
 };

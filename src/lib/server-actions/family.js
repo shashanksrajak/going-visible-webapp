@@ -3,7 +3,6 @@
 import { revalidatePath } from "next/cache";
 import { db } from "../firebase/config";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { currentUser } from "./user-auth";
 
 export async function addFamilyMember(userId, memberName, memberEmail) {
     try {

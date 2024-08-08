@@ -79,10 +79,6 @@ export default function Hero() {
                 variant="inherit"
                 sx={{
                   fontSize: "inherit",
-                  // color: (theme) =>
-                  //   theme.palette.mode === "light"
-                  //     ? "primary.main"
-                  //     : "primary.light",
                   opacity: 0.4,
                 }}
                 color={"primary"}
@@ -94,10 +90,6 @@ export default function Hero() {
                 variant="inherit"
                 sx={{
                   fontSize: "inherit",
-                  // color: (theme) =>
-                  //   theme.palette.mode === "light"
-                  //     ? "primary.main"
-                  //     : "primary.light",
                 }}
                 color={"primary"}
               >
@@ -107,10 +99,6 @@ export default function Hero() {
                   variant="inherit"
                   sx={{
                     fontSize: "inherit",
-                    // color: (theme) =>
-                    //   theme.palette.mode === "light"
-                    //     ? "primary.main"
-                    //     : "primary.light",
                   }}
                   color={"secondary"}
                 >

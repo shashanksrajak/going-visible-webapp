@@ -4,7 +4,6 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
@@ -59,7 +58,6 @@ export default function MoodTabs({ userId }) {
 
   return (
     <Box sx={{ bgcolor: "background.paper", width: "100%" }}>
-      {/* <AppBar position="static"> */}
       <Tabs
         value={value}
         onChange={handleChange}
@@ -70,9 +68,7 @@ export default function MoodTabs({ userId }) {
       >
         <Tab label="Daily Logs" {...a11yProps(0)} />
         <Tab label="Visualisation" {...a11yProps(1)} />
-        {/* <Tab label="Item Three" {...a11yProps(2)} /> */}
       </Tabs>
-      {/* </AppBar> */}
       <SwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={value}

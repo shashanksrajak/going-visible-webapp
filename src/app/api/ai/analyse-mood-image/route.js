@@ -7,12 +7,8 @@ import { addMoodLog } from "@/lib/server-actions/mood-logs";
 import { sendMoodAlerts } from "@/lib/mood-alerts";
 
 export async function POST(request) {
-    console.log('Analysing Mood Image AI route...')
-
     const formData = await request.formData()
     const file = formData.get("file");
-    console.log(file)
-
 
     const user = await currentUser();
 
@@ -50,34 +46,22 @@ The person is ${age} years old, their gender is ${gender}, their bio is ${bio} $
     const imageBuffer = Buffer.from(await file.arrayBuffer());
     const mimeType = file.type;
 
-    console.log('imageBuffer', imageBuffer);
-    console.log('mimeType', mimeType);
-
     const imageParts = fileToGenerativePart(imageBuffer, mimeType);
-
-    console.log('imageParts', imageParts);
 
     const result = await model.generateContent([prompt, imageParts]);
     const response = await result.response.text();
-    console.log(response);
 
     const jsonResponse = JSON.parse(response);
 
     // Access the mood sentiment and suggestion
     const moodSentiment = jsonResponse.mood_sentiment;
-    const suggestion = jsonResponse.suggestion;
     const tips = jsonResponse.tips;
 
-
-    console.log("Mood Sentiment:", moodSentiment);
-    console.log("Suggestion:", suggestion);
 
     if (moodSentiment === 'NEGATIVE') {
         sendMoodAlerts(tips)
     }
 
-    // TODO: fix this, this is not getting stored
-    // store data in firestore
     await addMoodLog(user.uid, null, jsonResponse, file)
 
     return Response.json(jsonResponse);

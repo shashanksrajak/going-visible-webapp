@@ -59,9 +59,6 @@ export default function MoodLogSelfieDialog({ disabled }) {
   const onImageUpload = async (file) => {
     setLoading(true);
     setAnalysing(true);
-    // console.log("onImageUpload called..");
-    // console.log(file);
-    // console.log(file.type);
 
     // Analyse Mood Using Image
     const formData = new FormData();
@@ -73,8 +70,6 @@ export default function MoodLogSelfieDialog({ disabled }) {
     });
 
     const data = await response.json();
-
-    console.log(data);
 
     const moodSentiment = data.mood_sentiment;
     const suggestion = data.suggestion;
