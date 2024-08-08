@@ -114,7 +114,7 @@ export default function Hero() {
                   }}
                   color={"secondary"}
                 >
-                  going visible.
+                  going visible
                 </Typography>
               </Typography>
             </Typography>
