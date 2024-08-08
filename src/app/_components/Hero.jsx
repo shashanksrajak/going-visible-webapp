@@ -124,9 +124,9 @@ export default function Hero() {
               sx={{ alignSelf: "center", width: { sm: "100%", md: "100%" } }}
               variant="h6"
             >
-              Transforming emotional well-being with cutting-edge AI technology.
-              Our platform harnesses the power of Gemini AI to provide
-              personalized insights and support.
+              Enhancing emotional well-being with Gemini AI, which offers
+              personalized insights by analyzing mood entries and facial
+              expressions.
             </Typography>
 
             <Box justifyContent={"center"} display={"flex"}>
@@ -141,30 +141,24 @@ export default function Hero() {
               </Button>
             </Box>
           </Stack>
+
           <Box
-            id="image"
-            sx={(theme) => ({
-              mt: { xs: 8, sm: 10 },
-              alignSelf: "center",
-              height: { xs: 200, sm: 700 },
-              width: "100%",
-              backgroundImage:
-                theme.palette.mode === "light"
-                  ? 'url("/static/images/home/hero-light.png")'
-                  : 'url("/static/images/home/hero-dark.png")',
-              backgroundSize: "cover",
-              borderRadius: "10px",
-              outline: "1px solid",
-              outlineColor:
-                theme.palette.mode === "light"
-                  ? alpha("#BFCCD9", 0.5)
-                  : alpha("#9CCCFC", 0.1),
-              boxShadow:
-                theme.palette.mode === "light"
-                  ? `0 0 12px 8px ${alpha("#9CCCFC", 0.2)}`
-                  : `0 0 24px 12px ${alpha("#033363", 0.2)}`,
-            })}
-          />
+            mt={4}
+            sx={{ width: { xs: "100%", md: "70%" }, aspectRatio: 16 / 9 }}
+          >
+            <iframe
+              src="https://www.youtube.com/embed/YKXnVvhK1LE?si=MjHBcbzB1s5KSu0x"
+              title="YouTube video player"
+              style={{
+                width: "100%",
+                height: "100%",
+                border: "none",
+              }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          </Box>
         </Container>
       </Box>
     </>

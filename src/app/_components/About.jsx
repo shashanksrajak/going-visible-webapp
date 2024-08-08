@@ -1,23 +1,12 @@
 "use client";
 
 import * as React from "react";
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
+
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
 export default function About() {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
-
   return (
     <Container
       id="about"
@@ -43,13 +32,37 @@ export default function About() {
         About
       </Typography>
       <Box sx={{ width: "100%" }}>
-        <Typography textAlign={"center"} variant="body1">
-          We are dedicated to revolutionizing emotional health tracking with
-          advanced AI technology. By integrating Gemini AI into our platform, we
-          provide users with precise, actionable insights into their emotional
-          journey. Our mission is to make emotional well-being accessible and
-          insightful, leveraging AI to bridge the gap between data and human
-          experience.
+        <Typography
+          variant="body1"
+          sx={{ color: "grey.700" }}
+          textAlign={"center"}
+        >
+          At Going Visible, we understand the challenges faced by individuals
+          with invisible illnesses, as well as anyone looking to gain a deeper
+          understanding of their emotional well-being. Our mission is to empower
+          users to track their moods, recognize patterns, and foster emotional
+          awareness through innovative technology and supportive features.
+          <br />
+          <br />
+          Our platform is designed to serve as a personal companion in your
+          mental health journey. By logging your moods, you can gain valuable
+          insights into your emotional patterns and triggers. With the help of
+          Google Gemini AI, "Going Visible" analyzes your mood entries to
+          provide personalized suggestions and insights that can aid in managing
+          your mental health.
+          <br />
+          <br />
+          Whether you're living with a chronic condition, navigating the ups and
+          downs of everyday life, or simply interested in understanding your
+          emotions better, "Going Visible" offers a safe and supportive space.
+          Our mood alert feature ensures your family and friends can be notified
+          when you need extra support, fostering a strong support network around
+          you.
+          <br />
+          <br />
+          We believe that by making the invisible visible, we can create a more
+          understanding and supportive world. Join us on this journey towards
+          greater emotional well-being and empowerment.
         </Typography>
       </Box>
     </Container>

@@ -6,48 +6,51 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import AutoFixHighRoundedIcon from "@mui/icons-material/AutoFixHighRounded";
-import ConstructionRoundedIcon from "@mui/icons-material/ConstructionRounded";
-import QueryStatsRoundedIcon from "@mui/icons-material/QueryStatsRounded";
-import SettingsSuggestRoundedIcon from "@mui/icons-material/SettingsSuggestRounded";
-import SupportAgentRoundedIcon from "@mui/icons-material/SupportAgentRounded";
-import ThumbUpAltRoundedIcon from "@mui/icons-material/ThumbUpAltRounded";
+
+import {
+  AutoFixHigh,
+  AutoGraphOutlined,
+  Email,
+  EmojiEvents,
+  Timeline,
+} from "@mui/icons-material";
 
 const items = [
   {
-    icon: <SettingsSuggestRoundedIcon />,
+    icon: <AutoFixHigh />,
     title: "AI-Powered Mood Tracking",
     description:
-      "Leverage the power of Gemini AI to log and analyze your moods. Our AI technology provides accurate mood tracking and insightful feedback based on your daily entries.",
+      "We leverage the power of Gemini AI to analyze your moods by analysing your mood log and facial expressions. Our AI technology provides accurate mood tracking and insightful feedback based on your daily entries.",
   },
   {
-    icon: <ConstructionRoundedIcon />,
+    icon: <AutoGraphOutlined />,
     title: "Insightful Analytics",
     description:
       "Our platform analyzes your mood trends and generates detailed reports. Discover patterns and receive personalized recommendations to enhance your emotional health.",
   },
   {
-    icon: <ThumbUpAltRoundedIcon />,
+    icon: <EmojiEvents />,
     title: "Personalized Rewards System",
     description:
-      "Earn badges and rewards through a system informed by AI insights. Our platform recognizes milestones like maintaining streaks or logging positive moods, using AI to track and reward your achievements.",
+      "Earn badges and rewards for actively logging your moods. Our platform recognizes milestones like maintaining streaks or logging positive moods, to track and reward your achievements.",
   },
   {
-    icon: <ThumbUpAltRoundedIcon />,
+    icon: <Timeline />,
     title: "Weekly Streaks",
     description:
-      "Track your consistency with AI-optimized weekly streaks. Gemini AI ensures accurate tracking of your mood logs and provides motivational feedback to help you keep your streak alive.",
+      "Track your consistency with weekly streaks. We support your emotional well being by tracking of your mood logs and provides motivational feedback to help you keep your streak alive.",
   },
   {
-    icon: <AutoFixHighRoundedIcon />,
+    icon: <Email />,
     title: "Family Alerts",
     description:
-      "Share your mood data with family members using AI-powered alerts. Gemini AI ensures that your loved ones receive timely and relevant updates about your emotional well-being.",
+      "We share your mood data with family members using alerts so that your loved ones become a catalyst in your well being.",
   },
   {
     icon: <AutoFixHighRoundedIcon />,
     title: "Gemini AI",
     description:
-      "Share your mood data with family members using AI-powered alerts. Gemini AI ensures that your loved ones receive timely and relevant updates about your emotional well-being.",
+      "We use Gemini AI by Google to power all our tools. So you get the best results and feedbacks while logging your moods.",
   },
 ];
 
@@ -81,9 +84,7 @@ export default function Features() {
             Features
           </Typography>
           <Typography variant="body1" sx={{ color: "grey.400" }}>
-            Explore why our product stands out: adaptability, durability,
-            user-friendly design, and innovation. Enjoy reliable customer
-            support and precision in every detail.
+            Explore highlights of our platform.
           </Typography>
         </Box>
         <Grid container spacing={2.5}>
