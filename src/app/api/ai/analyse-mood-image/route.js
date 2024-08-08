@@ -1,7 +1,9 @@
+export const maxDuration = 60;
+export const dynamic = 'force-dynamic';
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { currentUser } from "@/lib/server-actions/user-auth";
 import { addMoodLog } from "@/lib/server-actions/mood-logs";
-import { uploadImageFirebase } from "@/lib/firebase/storage";
 import { sendMoodAlerts } from "@/lib/mood-alerts";
 
 export async function POST(request) {
