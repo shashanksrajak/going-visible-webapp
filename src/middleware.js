@@ -5,6 +5,8 @@ const protectedRoutes = ['/dashboard', '/moods', '/family', '/profile'];
 // This function can be marked `async` if using `await` inside
 export default async function middleware(request) {
     console.log('-----------inside middleware---------')
+    console.log('MOOD_LOG_LIMIT', process.env.MOOD_LOG_LIMIT);
+    console.log('NEXT_PUBLIC_FIREBASE_APP_ID', process.env.NEXT_PUBLIC_FIREBASE_APP_ID)
     const sessionCookie = request.cookies.get("session");
     // console.log(sessionCookie);
 
