@@ -22,7 +22,7 @@ We wanted to let you know that ${userName} is currently having a challenging day
 
 Here’s a small suggestion that might help lift their spirits:
 
-${suggestion}
+<strong>${suggestion}</strong>
 
 Sometimes, a kind word or a simple gesture can have a tremendous impact. If you have a moment, it would mean a lot if you could reach out to ${userName} with some words of encouragement or offer to do something comforting together.
 
