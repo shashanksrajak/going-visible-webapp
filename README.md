@@ -1,40 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Going Visible
+
+**Going Visible** is a mood-tracking web app designed to help individuals with invisible illnesses like anxiety, depression, and chronic pain. By utilizing the Google Gemini API, the app offers personalized insights and alerts to enhance emotional well-being and connectivity.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Clone the repository:**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   git clone https://github.com/yourusername/going-visible.git
+   cd going-visible
 
-## Learn More
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install npm modules with legacy peer dependencies:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```
+   npm install --legacy-peer-deps
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```
 
-## Deploy on Vercel
+3. **Update environment variables:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   Rename .env.example to .env and update the necessary variables.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. **Run the development server:**
+   ```
+   npm run dev
 
-## Gemini API reference
+   ```
 
-https://ai.google.dev/gemini-api
+Open http://localhost:3000 with your browser to see the app in action.
+
+### Development
+
+You can start editing the app by modifying app/page.js. The page auto-updates as you edit the file.
+
+### Project Features
+
+1. Mood Tracking: Log and track your moods to gain insights into emotional patterns.
+2. AI-Powered Insights: The app leverages the Google Gemini API to provide personalized suggestions and insights.
+3. Support Network Alerts: Notify family and friends when extra support is needed.
+
+### Contact
+
+For any questions, feedback, or if you're interested in collaborating, please contact me at shashanksrajak@gmail.com

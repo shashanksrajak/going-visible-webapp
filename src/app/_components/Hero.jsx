@@ -135,7 +135,7 @@ export default function Hero() {
             sx={{ width: { xs: "100%", md: "70%" }, aspectRatio: 16 / 9 }}
           >
             <iframe
-              src="https://www.youtube.com/embed/YKXnVvhK1LE?si=MjHBcbzB1s5KSu0x"
+              src="https://www.youtube.com/embed/FRc86neAe0M?si=QWbk2dqm0p-gdcWm"
               title="YouTube video player"
               style={{
                 width: "100%",
