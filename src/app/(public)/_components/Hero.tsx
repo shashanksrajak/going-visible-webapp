@@ -23,15 +23,13 @@ export default function Hero() {
           fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
           lineHeight={"110%"}
         >
-          Meeting scheduling{" "}
+          Empowering People with{" "}
           <Text as={"span"} color={"orange.400"}>
-            made easy
+            Invisible Illnesses
           </Text>
         </Heading>
         <Text color={"gray.500"} maxW={"3xl"}>
-          Never miss a meeting. Never be late for one too. Keep track of your
-          meetings and receive smart reminders in appropriate times. Read your
-          smart “Daily Agenda” every morning.
+          to Truly going visible
         </Text>
         <Stack gap={6} direction={"row"}>
           <Button

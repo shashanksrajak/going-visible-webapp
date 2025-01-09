@@ -3,7 +3,8 @@
 import React from "react";
 import NextLink from "next/link";
 import { IconButton, Link as ChakraLink, VStack } from "@chakra-ui/react";
-import { LuMenu } from "react-icons/lu";
+import { Menu } from "lucide-react";
+import { useAuth } from "@clerk/nextjs";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,8 +16,10 @@ import {
   DrawerRoot,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import SignOutButton from "./SignOutButton";
 
 export default function MobileNavigation() {
+  const { isSignedIn } = useAuth();
   return (
     <>
       <DrawerRoot placement={"bottom"}>
@@ -27,9 +30,9 @@ export default function MobileNavigation() {
             variant={"plain"}
             aria-label="main menu"
             color={"white"}
-            onClick={() => console.log("clicked")}
+            size={"lg"}
           >
-            <LuMenu />
+            <Menu />
           </IconButton>
         </DrawerTrigger>
         <DrawerContent bgColor={"blue.700"}>
@@ -49,8 +52,22 @@ export default function MobileNavigation() {
             </VStack>
           </DrawerBody>
           <DrawerFooter justifyContent={"center"}>
-            <Button>Sign In</Button>
-            <Button>Sign Up</Button>
+            {!isSignedIn ? (
+              <>
+                <ChakraLink asChild color="white">
+                  <NextLink href={`/sign-in`}>
+                    <Button>Sign In</Button>
+                  </NextLink>
+                </ChakraLink>
+                <ChakraLink asChild color="white">
+                  <NextLink href={`/sign-up`}>
+                    <Button>Sign Up</Button>
+                  </NextLink>
+                </ChakraLink>
+              </>
+            ) : (
+              <SignOutButton />
+            )}
           </DrawerFooter>
           <DrawerCloseTrigger />
         </DrawerContent>
