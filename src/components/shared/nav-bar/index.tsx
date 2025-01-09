@@ -11,16 +11,21 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import NextLink from "next/link";
 import { LuMoon } from "react-icons/lu";
-import MobileNavigation from "./mobile-menu";
 
-export default function Navbar() {
+import { currentUser } from "@clerk/nextjs/server";
+
+import MobileNavigation from "./mobile-menu";
+import SignOutButton from "./SignOutButton";
+
+export default async function Navbar() {
+  const user = await currentUser();
   return (
     <Container bgColor={"blue.700"} py={4}>
       <Stack direction="row" gap={4} align="center" justify="space-between">
         <Box>
           <Heading
             as={"h1"}
-            size="lg"
+            size="2xl"
             color="white"
             aria-label="Going Visible | Back to home page"
           >
@@ -50,11 +55,17 @@ export default function Navbar() {
               <LuMoon />
             </IconButton>
 
+            {/* {isLoaded && ( */}
             <ChakraLink asChild color="white">
-              <NextLink href={`/auth/signin`}>
-                <Button>Sign In</Button>
-              </NextLink>
+              {user ? (
+                <SignOutButton />
+              ) : (
+                <NextLink href={`/sign-in`}>
+                  <Button>Sign In</Button>
+                </NextLink>
+              )}
             </ChakraLink>
+            {/* )} */}
           </HStack>
 
           <MobileNavigation />
