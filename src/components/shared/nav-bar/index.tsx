@@ -15,7 +15,6 @@ import { LuMoon } from "react-icons/lu";
 import { currentUser } from "@clerk/nextjs/server";
 
 import MobileNavigation from "./mobile-menu";
-import SignOutButton from "./SignOutButton";
 
 export default async function Navbar() {
   const user = await currentUser();
@@ -47,18 +46,16 @@ export default async function Navbar() {
               <NextLink href={`/about`}>Contact</NextLink>
             </ChakraLink>
 
-            <IconButton
-              variant={"plain"}
-              colorScheme={"white"}
-              aria-label="moon"
-            >
+            <IconButton variant={"plain"} aria-label="moon" color={"white"}>
               <LuMoon />
             </IconButton>
 
             {/* {isLoaded && ( */}
             <ChakraLink asChild color="white">
               {user ? (
-                <SignOutButton />
+                <NextLink href={`/dashboard`}>
+                  <Button>Dashboard</Button>
+                </NextLink>
               ) : (
                 <NextLink href={`/sign-in`}>
                   <Button>Sign In</Button>

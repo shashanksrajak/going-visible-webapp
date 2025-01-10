@@ -1,6 +1,17 @@
 import React from "react";
-import { Flex, Text, IconButton, Container, HStack } from "@chakra-ui/react";
-import { LuBell } from "react-icons/lu";
+import {
+  Flex,
+  Text,
+  // IconButton,
+  Container,
+  HStack,
+  Box,
+  Link as ChakraLink,
+} from "@chakra-ui/react";
+// import { LuBell } from "react-icons/lu";
+import NextLink from "next/link";
+
+import { Avatar } from "@/components/ui/avatar";
 
 import MobileNavigation from "./MobileNavigation";
 
@@ -12,10 +23,21 @@ const TopNavigation: React.FC = () => {
           Going Visible
         </Text>
 
-        <HStack>
-          <IconButton variant={"ghost"}>
+        <HStack alignItems={"center"} justifyContent={"space-between"}>
+          {/* <IconButton variant={"ghost"}>
             <LuBell />
-          </IconButton>
+          </IconButton> */}
+
+          <Box>
+            <ChakraLink asChild>
+              <NextLink href="/settings/account">
+                <Avatar
+                  name="Segun Adebayo"
+                  src="https://bit.ly/sage-adebayo"
+                />
+              </NextLink>
+            </ChakraLink>
+          </Box>
 
           <MobileNavigation />
         </HStack>
