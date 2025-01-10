@@ -16,7 +16,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import NavigationItems from "./NavigationItems";
-import SignOutButton from "@/components/shared/nav-bar/SignOutButton";
+import SignOutButton from "@/components/shared/SignOutButton";
 
 export default function MobileNavigation() {
   const { isSignedIn } = useAuth();
@@ -26,7 +26,7 @@ export default function MobileNavigation() {
         <DrawerBackdrop />
         <DrawerTrigger asChild>
           <IconButton
-            display={{ base: "block", md: "none" }}
+            display={{ base: "flex", md: "none" }}
             variant={"plain"}
             aria-label="main menu"
             color={"white"}
@@ -37,7 +37,7 @@ export default function MobileNavigation() {
         </DrawerTrigger>
         <DrawerContent py={4}>
           <DrawerBody>
-            <VStack alignItems={"flex-start"}>
+            <VStack alignItems={"flex-start"} gap={8}>
               <NavigationItems />
             </VStack>
           </DrawerBody>

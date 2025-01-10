@@ -24,13 +24,12 @@ export default function Hero() {
           lineHeight={"110%"}
         >
           Empowering People with{" "}
-          <Text as={"span"} color={"orange.400"}>
-            Invisible Illnesses
+          <Text color={"orange.400"}>Invisible Illnesses </Text>
+          <Text as={"span"} maxW={"3xl"}>
+            to Truly going visible
           </Text>
         </Heading>
-        <Text color={"gray.500"} maxW={"3xl"}>
-          to Truly going visible
-        </Text>
+
         <Stack gap={6} direction={"row"}>
           <Button
             rounded={"full"}

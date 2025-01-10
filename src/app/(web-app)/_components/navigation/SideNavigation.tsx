@@ -7,7 +7,7 @@ export default function SideNavigation() {
   return (
     <Card.Root shadow={"md"}>
       <Card.Body>
-        <VStack alignItems={"flex-start"}>
+        <VStack alignItems={"flex-start"} gap={4}>
           <NavigationItems />
         </VStack>
       </Card.Body>

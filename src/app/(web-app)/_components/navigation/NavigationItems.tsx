@@ -1,5 +1,5 @@
 import React from "react";
-import { HStack, Link as ChakraLink } from "@chakra-ui/react";
+import { HStack, Link as ChakraLink, Text } from "@chakra-ui/react";
 import NextLink from "next/link";
 
 import {
@@ -33,7 +33,7 @@ export default function NavigationItems() {
             <NextLink href={item.href}>
               <HStack>
                 {IconComponent && <IconComponent />} {/* Render the icon */}
-                {item.title}
+                <Text fontWeight={"semibold"}> {item.title}</Text>
               </HStack>
             </NextLink>
           </ChakraLink>

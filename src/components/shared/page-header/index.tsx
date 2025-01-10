@@ -15,7 +15,7 @@ export default function PageHeader({
   switch (type) {
     case "app":
       return (
-        <Container maxW={"full"} py={5} boxShadow="md">
+        <Container maxW={"full"} pb={4}>
           <Heading as={"h1"} size={"3xl"}>
             {title}
           </Heading>
