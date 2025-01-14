@@ -11,17 +11,20 @@ export default function SignOutButton() {
   const [loading, setLoading] = React.useState(false);
   const router = useRouter();
   return (
-    <Button
-      onClick={async () => {
-        setLoading(true);
-        await signOut({});
-        setLoading(false);
-        router.replace(`/?signedOut=true`);
-      }}
-      loadingText={"Signing out..."}
-      loading={loading}
-    >
-      Sign Out
-    </Button>
+    <>
+      <Button
+        onClick={async () => {
+          setLoading(true);
+          await signOut({});
+          setLoading(false);
+          router.replace(`/?signedOut=true`);
+        }}
+        loadingText={"Signing out..."}
+        loading={loading}
+        colorPalette={"red"}
+      >
+        Sign Out
+      </Button>
+    </>
   );
 }

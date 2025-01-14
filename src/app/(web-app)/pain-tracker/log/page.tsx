@@ -1,5 +1,10 @@
+import PageHeader from "@/components/shared/page-header";
 import React from "react";
 
 export default function MoodLogPage() {
-  return <div>MoodLogPage</div>;
+  return (
+    <>
+      <PageHeader type="app" title="Log Pain" />
+    </>
+  );
 }
