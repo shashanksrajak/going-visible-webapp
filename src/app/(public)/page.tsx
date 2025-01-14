@@ -1,3 +1,6 @@
+import CallToAction from "./_components/CallToAction";
+import Features from "./_components/Features";
+import Footer from "./_components/Footer";
 import Hero from "./_components/Hero";
 import { Alert } from "@/components/ui/alert";
 
@@ -17,6 +20,9 @@ export default async function Home({
         </Alert>
       )}
       <Hero />
+      <Features />
+      <CallToAction />
+      <Footer />
     </div>
   );
 }
