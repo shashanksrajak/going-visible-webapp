@@ -1,11 +1,13 @@
 import React from "react";
 
 import SignOutButton from "@/components/shared/SignOutButton";
+import PageHeader from "@/components/shared/page-header";
 
 export default function Page() {
   return (
-    <div>
+    <>
+      <PageHeader type="app" title="My Account" />
       <SignOutButton />
-    </div>
+    </>
   );
 }

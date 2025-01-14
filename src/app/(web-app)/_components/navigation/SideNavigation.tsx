@@ -1,16 +1,21 @@
 import React from "react";
-import { Card, VStack } from "@chakra-ui/react";
+import { Box, Text, VStack } from "@chakra-ui/react";
 
 import NavigationItems from "./NavigationItems";
 
 export default function SideNavigation() {
   return (
-    <Card.Root shadow={"md"}>
-      <Card.Body>
-        <VStack alignItems={"flex-start"} gap={4}>
-          <NavigationItems />
-        </VStack>
-      </Card.Body>
-    </Card.Root>
+    <Box py={5}>
+      <Box px={5} mb={5}>
+        {/* logo */}
+
+        <Text fontSize={"2xl"} fontWeight={"bold"}>
+          Going Visible
+        </Text>
+      </Box>
+      <VStack alignItems={"flex-start"} gap={0}>
+        <NavigationItems />
+      </VStack>
+    </Box>
   );
 }

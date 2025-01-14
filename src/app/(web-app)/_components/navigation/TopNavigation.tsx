@@ -1,12 +1,13 @@
 import React from "react";
 import {
   Flex,
-  Text,
   // IconButton,
+  Text,
   Container,
   HStack,
   Box,
   Link as ChakraLink,
+  IconButton,
 } from "@chakra-ui/react";
 // import { LuBell } from "react-icons/lu";
 import NextLink from "next/link";
@@ -14,21 +15,35 @@ import NextLink from "next/link";
 import { Avatar } from "@/components/ui/avatar";
 
 import MobileNavigation from "./MobileNavigation";
+import { Bell } from "lucide-react";
 
 const TopNavigation: React.FC = () => {
   return (
-    <Container bg="blue.700" py={4}>
+    <Container py={2} borderBottomWidth={1}>
       <Flex justify="space-between" align="center">
-        <Text color="white" fontSize="lg" fontWeight="bold">
-          Going Visible
-        </Text>
+        <HStack
+          alignItems={"center"}
+          justifyContent={"space-between"}
+          width="100%"
+        >
+          <HStack gap={0}>
+            <MobileNavigation />
+            <Box display={{ base: "flex", md: "none" }}>
+              <Text fontWeight={"semibold"} fontSize={"lg"}>
+                Going Visible
+              </Text>
+            </Box>
+          </HStack>
 
-        <HStack alignItems={"center"} justifyContent={"space-between"}>
-          {/* <IconButton variant={"ghost"}>
-            <LuBell />
-          </IconButton> */}
-
-          <Box>
+          <HStack gap={4}>
+            <IconButton
+              variant={"plain"}
+              aria-label="Notifications"
+              size={"lg"}
+              alignItems={"center"}
+            >
+              <Bell />
+            </IconButton>
             <ChakraLink asChild>
               <NextLink href="/settings/account">
                 <Avatar
@@ -37,9 +52,7 @@ const TopNavigation: React.FC = () => {
                 />
               </NextLink>
             </ChakraLink>
-          </Box>
-
-          <MobileNavigation />
+          </HStack>
         </HStack>
       </Flex>
     </Container>

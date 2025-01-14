@@ -29,7 +29,6 @@ export default function MobileNavigation() {
             display={{ base: "flex", md: "none" }}
             variant={"plain"}
             aria-label="main menu"
-            color={"white"}
             onClick={() => console.log("clicked")}
           >
             <LuMenu />

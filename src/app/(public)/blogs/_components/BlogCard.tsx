@@ -1,5 +1,6 @@
 import { Card, HStack, Image, Text } from "@chakra-ui/react";
-import { Avatar } from "@/components/ui/avatar";
+import NextLink from "next/link";
+// import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 
 export default function BlogCard() {
@@ -14,7 +15,7 @@ export default function BlogCard() {
           <Text fontSize="sm" color={"gray.700"}>
             January 4, 2025
           </Text>
-          <Avatar name="John Doe" src="https://bit.ly/dan-abramov" />
+          {/* <Avatar name="John Doe" src="https://bit.ly/dan-abramov" /> */}
         </HStack>
         <Card.Title>Living room Sofa</Card.Title>
         <Card.Description>
@@ -23,7 +24,11 @@ export default function BlogCard() {
         </Card.Description>
       </Card.Body>
       <Card.Footer gap="2">
-        <Button variant="solid">Read more</Button>
+        <NextLink href={"/blogs/what-is-going-visible"} passHref>
+          <Button variant="outline" colorPalette={"primary"}>
+            Read more
+          </Button>
+        </NextLink>
       </Card.Footer>
     </Card.Root>
   );

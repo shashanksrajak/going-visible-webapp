@@ -1,4 +1,4 @@
-import { Container, Heading } from "@chakra-ui/react";
+import { Container, Heading, Box } from "@chakra-ui/react";
 import React from "react";
 
 interface PageHeaderProps {
@@ -15,12 +15,12 @@ export default function PageHeader({
   switch (type) {
     case "app":
       return (
-        <Container maxW={"full"} pb={4}>
-          <Heading as={"h1"} size={"3xl"}>
+        <Box mb={5}>
+          <Heading as={"h1"} size={"3xl"} textTransform={"uppercase"}>
             {title}
           </Heading>
           {description && <p>{description}</p>}
-        </Container>
+        </Box>
       );
     case "page":
       return (
@@ -29,7 +29,7 @@ export default function PageHeader({
           maxW={"full"}
           py={20}
           boxShadow="xl"
-          bgColor={"blue.400"}
+          bgColor={"secondary.300"}
         >
           <Heading as={"h1"} size={"6xl"}>
             {title}
