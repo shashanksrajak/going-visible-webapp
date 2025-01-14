@@ -8,6 +8,8 @@ import {
   Text,
   Button,
 } from "@chakra-ui/react";
+import { Play } from "lucide-react";
+import NextLink from "next/link";
 
 export default function Hero() {
   return (
@@ -22,26 +24,40 @@ export default function Hero() {
           fontWeight={600}
           fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
           lineHeight={"110%"}
+          color={"primary.600"}
         >
           Empowering People with{" "}
-          <Text color={"orange.400"}>Invisible Illnesses </Text>
+          <Text color={"secondary.600"}>Invisible Illnesses </Text>
           <Text as={"span"} maxW={"3xl"}>
-            to Truly going visible
+            to Truly Going Visible
           </Text>
         </Heading>
 
+        <Heading>
+          Monitor your mood, pain, medications, and appointments all in one
+          place.
+        </Heading>
+
         <Stack gap={6} direction={"row"}>
+          <NextLink href="/sign-up" passHref>
+            <Button
+              rounded={"full"}
+              px={6}
+              colorPalette={"primary"}
+              size={"lg"}
+            >
+              Get Started
+            </Button>
+          </NextLink>
           <Button
             rounded={"full"}
             px={6}
-            colorScheme={"orange"}
-            bg={"orange.400"}
-            _hover={{ bg: "orange.500" }}
+            colorPalette={"primary"}
+            variant={"outline"}
+            size={"lg"}
           >
-            Get started
-          </Button>
-          <Button rounded={"full"} px={6}>
-            Learn more
+            <Play />
+            Watch Demo
           </Button>
         </Stack>
         <Flex w={"full"}>
