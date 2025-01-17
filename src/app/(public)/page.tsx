@@ -1,28 +1,10 @@
-import CallToAction from "./_components/CallToAction";
-import Features from "./_components/Features";
-import Footer from "./_components/Footer";
-import Hero from "./_components/Hero";
-import { Alert } from "@/components/ui/alert";
+import Image from "next/image";
+import Hero from "./_components/Home/Hero";
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] }>;
-}) {
-  // read query params
-  const { signedOut = false } = await searchParams;
-
+export default function Home() {
   return (
-    <div>
-      {signedOut && (
-        <Alert status="success" title="Signed Out">
-          Thanks for using going visible. We hope to see you again soon!
-        </Alert>
-      )}
+    <>
       <Hero />
-      <Features />
-      <CallToAction />
-      <Footer />
-    </div>
+    </>
   );
 }

@@ -1,5 +1,6 @@
-import Navbar from "@/components/shared/nav-bar";
 import type { Metadata } from "next";
+
+import Navbar from "./_components/Navbar";
 
 export const metadata: Metadata = {
   title: "Home Page | Going Visible",
