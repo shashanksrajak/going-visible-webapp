@@ -1,5 +1,7 @@
 import React from "react";
+import NextLink from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 
 const user = {
   name: "shadcn",
@@ -9,11 +11,13 @@ const user = {
 
 export default function UserAvatarMenu() {
   return (
-    <div>
-      <Avatar className="h-8 w-8 rounded-full">
-        <AvatarImage src={user.avatar} alt={user.name} />
-        <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-      </Avatar>
-    </div>
+    <NextLink href={"/settings/account"}>
+      <Button size={"icon"} variant={"ghost"}>
+        <Avatar className="h-8 w-8 rounded-full">
+          <AvatarImage src={user.avatar} alt={user.name} />
+          <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+        </Avatar>
+      </Button>
+    </NextLink>
   );
 }

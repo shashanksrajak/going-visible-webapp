@@ -10,7 +10,7 @@ export function SidebarTrigger() {
   return (
     <Button
       onClick={toggleSidebar}
-      variant={"outline"}
+      variant={"ghost"}
       size={"icon"}
       // className="-ml-4"
     >

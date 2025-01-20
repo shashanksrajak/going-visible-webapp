@@ -21,7 +21,7 @@ export default function MobileNavigation() {
     <>
       <Sheet>
         <SheetTrigger asChild>
-          <Button className="flex md:hidden" variant={"ghost"}>
+          <Button className="flex md:hidden" variant={"ghost"} size={"icon"}>
             <Menu />
           </Button>
         </SheetTrigger>

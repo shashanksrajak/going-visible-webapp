@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   return (
-    <div className="container mx-auto max-w-5xl py-20 md:py-28">
+    <div className="container mx-auto p-4 max-w-5xl py-20 md:py-28">
       <div className="text-center flex flex-col items-center gap-8 md:gap-10">
-        <h1 className=" font-semibold text-3xl sm:text-4xl md:text-6xl leading-tight text-primary">
+        <h1 className=" font-semibold text-4xl sm:text-4xl md:text-6xl leading-tight text-primary">
           Empowering People with
           <br />
           <span className="text-orange-300">Invisible Illnesses</span>

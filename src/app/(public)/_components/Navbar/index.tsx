@@ -2,16 +2,15 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import NextLink from "next/link";
 
-// import { currentUser } from "@clerk/nextjs/server";
-
+import { currentUser } from "@/lib/auth";
 import MobileNavigation from "./MobileNavigation";
+import { ModeToggle } from "@/components/ui/dark-mode-toggle-button";
 // import { ColorModeButton } from "@/components/ui/color-mode";
 
 export default async function Navbar() {
-  // const user = await currentUser();
-  const user = false;
+  const user = await currentUser();
   return (
-    <div className="shadow-md bg-bg-panel sticky top-0 z-100">
+    <div className="shadow-md  backdrop-blur-lg bg-background/70 sticky top-0 z-100">
       <div className="container mx-auto p-4">
         <div className="flex flex-row gap-4 items-center justify-between">
           <div>
@@ -39,12 +38,14 @@ export default async function Navbar() {
                 </NextLink>
               </div>
 
-              {/* <ColorModeButton /> */}
+              <>
+                <ModeToggle />
+              </>
 
               <div className="hidden md:flex flex-row gap-4 md:gap-10">
                 {user ? (
-                  <NextLink href={`/dashboard`} passHref>
-                    <Button variant={"default"}>Dashboard</Button>
+                  <NextLink href={`/home`} passHref>
+                    <Button variant={"default"}>Home</Button>
                   </NextLink>
                 ) : (
                   <NextLink href={`/sign-in`} passHref>
