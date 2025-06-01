@@ -7,12 +7,13 @@
 - **🏆 Competition Submission**: [Google AI Challenge - Going Visible](https://ai.google.dev/competition/projects/going-visible)
 - **🎥 Demo Video**: [YouTube Demo](https://www.youtube.com/watch?v=FRc86neAe0M)
 - **📖 Project Details**: [Project Description](https://www.shashankrajak.in/projects/going-visible-webapp)
+- **📝 Blog Post**: [More about the Going Visible Project](http://localhost:3000/blogs/going-visible-google-gemini-api-developer-competition-submission)
 
 ## 📸 Screenshots
 
-<img src="docs/assets/screenshot-1.png" alt="Going Visible App Screenshot 1" width="600">
+![Going Visible App Screenshot 1](docs/assets/screenshot-1.png)
 
-<img src="docs/assets/screenshot-2.png" alt="Going Visible App Screenshot 2" width="600">
+![Going Visible App Screenshot 2](docs/assets/screenshot-2.png)
 
 ## Getting Started
 
